@@ -51,6 +51,8 @@ module Poker
   end
 
   def straight?
+    return true if self.cards.map(&:value) == [1, 2, 3, 4, 5] # wheel straight!
+
     offset = self.cards[0].value
     self.cards.each_with_index do |card, i|
       return false unless offset + i == card.value

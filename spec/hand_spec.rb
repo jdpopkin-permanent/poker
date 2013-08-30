@@ -182,7 +182,7 @@ describe Hand do
     let(:deck) { double("deck") }
     subject(:hand) { Hand.new(deck) }
 
-    it "returns 0 for High Card" do
+    it "returns array starting with 0 for High Card" do
       five_cards = [Card.new(2, :diamond), Card.new(4, :spade),
         Card.new(6, :heart), Card.new(8, :club), Card.new(10, :spade)]
       deck.stub(:deal).and_return(five_cards.dup)
@@ -190,7 +190,7 @@ describe Hand do
       expect(hand.evaluate).to eq([0, 10, 8, 6, 4, 2])
     end
 
-    it "returns 1 for One Pair" do
+    it "returns array starting with 1 for One Pair" do
       five_cards = [Card.new(2, :diamond), Card.new(4, :spade),
         Card.new(6, :heart), Card.new(10, :club), Card.new(10, :spade)]
       deck.stub(:deal).and_return(five_cards.dup)
@@ -198,7 +198,7 @@ describe Hand do
       expect(hand.evaluate).to eq([1, 10, 10, 6, 4, 2])
     end
 
-    it "returns 2 for Two Pair" do
+    it "returns array starting with 2 for Two Pair" do
       five_cards = [Card.new(4, :diamond), Card.new(4, :spade),
         Card.new(6, :heart), Card.new(10, :club), Card.new(10, :spade)]
       deck.stub(:deal).and_return(five_cards.dup)
@@ -206,7 +206,7 @@ describe Hand do
       expect(hand.evaluate).to eq([2, 10, 10, 4, 4, 6])
     end
 
-    it "returns 3 for Three of a Kind" do
+    it "returns array starting with 3 for Three of a Kind" do
       five_cards = [Card.new(4, :diamond), Card.new(4, :spade),
         Card.new(6, :heart), Card.new(4, :club), Card.new(10, :spade)]
       deck.stub(:deal).and_return(five_cards.dup)
@@ -214,7 +214,7 @@ describe Hand do
       expect(hand.evaluate).to eq([3, 4, 4, 4, 10, 6])
     end
 
-    it "returns 4 for a Straight" do
+    it "returns array starting with 4 for a Straight" do
       five_cards = [Card.new(4, :diamond), Card.new(5, :spade),
         Card.new(6, :heart), Card.new(7, :club), Card.new(8, :spade)]
       deck.stub(:deal).and_return(five_cards.dup)
@@ -222,7 +222,7 @@ describe Hand do
       expect(hand.evaluate).to eq([4, 8, 7, 6, 5, 4])
     end
 
-    it "returns 5 for a Flush" do
+    it "returns array starting with 5 for a Flush" do
       five_cards = [Card.new(2, :spade), Card.new(5, :spade),
         Card.new(6, :spade), Card.new(7, :spade), Card.new(8, :spade)]
       deck.stub(:deal).and_return(five_cards.dup)
@@ -230,7 +230,7 @@ describe Hand do
       expect(hand.evaluate).to eq([5, 8, 7, 6, 5, 2])
     end
 
-    it "returns 6 for a Full House" do
+    it "returns array starting with 6 for a Full House" do
       five_cards = [Card.new(2, :diamond), Card.new(2, :spade),
         Card.new(2, :club), Card.new(8, :diamond), Card.new(8, :spade)]
       deck.stub(:deal).and_return(five_cards.dup)
@@ -238,7 +238,7 @@ describe Hand do
       expect(hand.evaluate).to eq([6, 2, 2, 2, 8, 8])
     end
 
-    it "returns 7 for Four of a Kind" do
+    it "returns array starting with 7 for Four of a Kind" do
       five_cards = [Card.new(2, :diamond), Card.new(2, :spade),
         Card.new(2, :club), Card.new(2, :heart), Card.new(8, :spade)]
       deck.stub(:deal).and_return(five_cards.dup)
@@ -246,7 +246,7 @@ describe Hand do
       expect(hand.evaluate).to eq([7, 2, 2, 2, 2, 8])
     end
 
-    it "returns 8 for Straight Flush" do
+    it "returns array starting with 8 for Straight Flush" do
       five_cards = [Card.new(13, :diamond), Card.new(12, :diamond),
         Card.new(11, :diamond), Card.new(10, :diamond), Card.new(9, :diamond)]
       deck.stub(:deal).and_return(five_cards.dup)

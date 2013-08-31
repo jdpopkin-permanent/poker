@@ -1,9 +1,14 @@
 class Poker
 
-  def initialize(players)
-    @players = players
+  def initialize(num_players)
+    
+    @players = []
+    base_purse = 100 # can change
     @ante = 1 # can change
     @deck = Deck.new
+    num_players.times do |i|
+      @players << Player.new(i + 1, self, base_purse, @deck)
+    end
   end
 
   def play

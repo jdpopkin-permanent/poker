@@ -1,6 +1,6 @@
-# require "cards.rb"
+require_relative "cards.rb"
 
-module Poker
+module PokerHands
   def evaluate
     self.cards.sort_by! { |card| card.value }
     # straight flush
@@ -100,7 +100,7 @@ end
 
 class Hand
 
-  include Poker
+  include PokerHands
 
   attr_reader :cards
 
@@ -108,10 +108,11 @@ class Hand
     @cards = []
     @deck = deck
     @cards += draw(5)
+    @cards = @cards.sort_by { |card| card.value }
   end
 
   def to_s
-    @cards.map(&:to_s).join(" | ")
+    @cards.map(&:to_s) #.join(" | ")
   end
 
   def discard(indexes)
@@ -120,6 +121,7 @@ class Hand
     indexes.each do |index|
       self.cards[index] = new_cards.pop
     end
+    @cards = @cards.sort_by { |card| card.value }
   end
 
   private

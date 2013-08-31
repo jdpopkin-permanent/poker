@@ -1,6 +1,6 @@
 class Player
 
-  attr_reader :purse
+  attr_reader :purse, :id
   attr_accessor :hand
 
   def initialize(id, game, purse, deck)
@@ -19,8 +19,8 @@ class Player
   end
 
   def bet_phase(current_bet)
-    puts "Player #{id}'s hand: #{hand.to_s}"
-    puts "Player #{id}'s purse: #{purse}"
+    puts "Player #{@id}'s hand: #{hand.to_s}"
+    puts "Player #{@id}'s purse: #{purse}"
     puts "Current bet: #{current_bet}"
     puts "Choose to see the bet (S), raise the bet (R), or fold (F)."
     choice = gets.chomp.upcase[0]
@@ -49,12 +49,11 @@ class Player
   end
 
   def discard_phase
-    puts "Player #{id}'s turn to discard."
+    puts "Player #{@id}'s turn to discard."
     puts "Choose cards to discard (by index, starting at zero). Separate with commas."
-    puts self.hand
+    puts self.hand.inspect
     choices = gets.chomp.split(",").map(&:to_i)
     self.hand.discard(choices)
-    self.hand.draw(choices.length)
   end
 
 

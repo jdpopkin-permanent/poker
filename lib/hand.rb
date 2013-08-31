@@ -111,7 +111,7 @@ class Hand
   end
 
   def to_s
-    @cards.map(&:to_s)
+    @cards.map(&:to_s).join(" | ")
   end
 
   def discard(indexes)

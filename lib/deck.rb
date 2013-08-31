@@ -1,4 +1,4 @@
-require "cards.rb"
+#require_relative "cards.rb"
 
 class Deck
 

@@ -1,4 +1,4 @@
-require "cards.rb"
+# require "cards.rb"
 
 module Poker
   def evaluate

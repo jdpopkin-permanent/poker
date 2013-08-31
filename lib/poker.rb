@@ -1,6 +1,11 @@
+# require_relative "cards.rb"
+require_relative "deck.rb"
+require_relative "hand.rb"
+require_relative "player.rb"
+
 class Poker
 
-  def initialize(num_players)
+  def initialize(num_players = 4)
     
     @players = []
     base_purse = 100 # can change
@@ -72,4 +77,9 @@ class Poker
     current_bet
   end
 
+end
+
+if __FILE__ == $PROGRAM_NAME
+  p = Poker.new(4)
+  p.play
 end
